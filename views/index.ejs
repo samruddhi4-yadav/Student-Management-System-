@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="navbar">Student Management System</div>
+
+<div class="container">
+    <div class="card">
+
+        <div class="top-bar">
+            <form class="search-box" action="/search" method="get">
+                <input type="text" name="keyword" placeholder="Search by name or course">
+                <button type="submit">Search</button>
+            </form>
+
+            <a href="/add" class="btn btn-add">+ Add Student</a>
+        </div>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Course</th>
+                <th>Action</th>
+            </tr>
+
+            <% students.forEach(s => { %>
+            <tr>
+                <td><%= s.id %></td>
+                <td><%= s.name %></td>
+                <td><%= s.email %></td>
+                <td><%= s.course %></td>
+                <td>
+                    <a class="btn btn-edit" href="/edit/<%= s.id %>">Edit</a>
+                    <a class="btn btn-delete" href="/delete/<%= s.id %>" onclick="return confirm('Delete this student?')">Delete</a>
+                </td>
+            </tr>
+            <% }) %>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
